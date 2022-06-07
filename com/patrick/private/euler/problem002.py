@@ -22,7 +22,7 @@ class Problem2(object):
     def attempt_1(self):
         total = 0
         number = 0
-        fib = MathUtils.calculate_fibonacci(start=(0, 1))
+        fib = MathUtils.fibonacci()
         while number <= self.upper_limit:
             if number % 2 == 0:
                 total += number
@@ -36,7 +36,7 @@ class Problem2(object):
     def official_solution(self):
         total = 0
         number = 0
-        fib = self.calculate_even_fibonacci(start=(0, 2))
+        fib = self.even_fibonacci(start=(0, 2))
 
         while number <= self.upper_limit:
             total += number
@@ -46,7 +46,7 @@ class Problem2(object):
         print(f"Result: {total}")
 
     @staticmethod
-    def calculate_even_fibonacci(start: tuple):
+    def even_fibonacci(start: tuple):
         prev, curr = start
 
         while True:

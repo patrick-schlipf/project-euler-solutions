@@ -18,7 +18,7 @@ class Problem10(object):
 
     @Benchmark
     def attempt_1(self):
-        result = sum([int(prime) for prime in MathUtils.primes_sieve(self.limit)])
+        result = sum([int(prime) for prime in MathUtils.primes_sieve_of_eratosthenes(self.limit)])
         print("")
         print(f"Result: {result}")
 

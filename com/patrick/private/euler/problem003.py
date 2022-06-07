@@ -21,7 +21,7 @@ class Problem3(object):
         factors = [1]
         n = self.number
 
-        primes = MathUtils.primes_sieve(10000)
+        primes = MathUtils.primes_sieve_of_eratosthenes(10000)
         for prime in primes:
             if n < prime:
                 break

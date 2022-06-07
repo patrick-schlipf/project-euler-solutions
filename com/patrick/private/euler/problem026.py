@@ -33,7 +33,7 @@ class Problem26(object):
     def attempt_1(self):
         result = 0
         max_cycle_length = 0
-        reversed_primes = list(MathUtils.primes_sieve(self.limit))[::-1]
+        reversed_primes = list(MathUtils.primes_sieve_of_eratosthenes(self.limit))[::-1]
         for prime in reversed_primes:
             if prime < max_cycle_length:
                 break
@@ -80,7 +80,7 @@ class Problem26(object):
         result = 2
         max_cycle = ""
         max_cycle_length = 0
-        for prime in list(MathUtils.primes_sieve(self.limit))[::-1]:
+        for prime in list(MathUtils.primes_sieve_of_eratosthenes(self.limit))[::-1]:
             if prime < max_cycle_length:
                 break
 

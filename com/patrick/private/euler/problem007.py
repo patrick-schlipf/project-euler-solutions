@@ -31,7 +31,7 @@ class Problem7(object):
         upper_bound = n * ln(n) + n * ln(ln(n))
         # ------------------------------------------------------------------------------------------------------------
 
-        prime = MathUtils.primes_sieve(int(upper_bound))
+        prime = MathUtils.primes_sieve_of_eratosthenes(int(upper_bound))
         for n in range(self.nth_prime - 1):
             result = next(prime)
 
