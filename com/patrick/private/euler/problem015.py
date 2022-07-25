@@ -11,14 +11,13 @@ class Problem15(object):
 
     def __init__(self, grid_size: int):
         self.grid_size = grid_size
-        self.grid = [[False for _ in range(self.grid_size + 1)] for _ in range(self.grid_size + 1)]
         print(f"Problem 15: How many such routes are there through a {self.grid_size}×{self.grid_size} grid?")
         print(f"grid_size={self.grid_size}")
 
     @Benchmark
     def attempt_1(self):
-        self.grid = [[False for _ in range(self.grid_size + 1)] for _ in range(self.grid_size + 1)]
-        result = self.calculate_routes_recursive(self.grid_size, self.grid_size)
+        grid = [[False for _ in range(self.grid_size + 1)] for _ in range(self.grid_size + 1)]
+        result = self.calculate_routes_recursive(self.grid_size, self.grid_size, grid)
 
         print("")
         print(f"Result: {result}")
@@ -41,17 +40,19 @@ class Problem15(object):
         print("")
         print(f"Result: {result}")
 
-    def calculate_routes_recursive(self, dim_x, dim_y):
+    @staticmethod
+    def calculate_routes_recursive(dim_x, dim_y, grid):
         if dim_x == 0 or dim_y == 0:
             return 1
 
-        if self.grid[dim_x][dim_y]:
-            return self.grid[dim_x][dim_y]
+        if grid[dim_x][dim_y]:
+            return grid[dim_x][dim_y]
 
-        self.grid[dim_x][dim_y] = \
-            self.calculate_routes_recursive(dim_x - 1, dim_y) + self.calculate_routes_recursive(dim_x, dim_y - 1)
+        grid[dim_x][dim_y] = \
+            Problem15.calculate_routes_recursive(dim_x - 1, dim_y, grid) + \
+            Problem15.calculate_routes_recursive(dim_x, dim_y - 1, grid)
 
-        return self.grid[dim_x][dim_y]
+        return grid[dim_x][dim_y]
 
     @staticmethod
     def calculate_routes_iterative(dim_x, dim_y):
