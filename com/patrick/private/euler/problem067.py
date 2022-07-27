@@ -1,5 +1,6 @@
 from operator import attrgetter
 
+from com.patrick.private.euler.problem018 import TreeNode
 from com.patrick.private.utils.benchmark import Benchmark
 
 
@@ -64,48 +65,6 @@ class Problem67(object):
         result = "N/A"
         print("")
         print(f"Result: {result}")
-
-
-class TreeNode(object):
-    def __init__(self, data, left=None, right=None):
-        self.has_parent = False
-        self.data = data
-        self.weight = 100 - data
-        self.distance = self.weight
-        self.result = data
-        self.left = left
-        self.right = right
-
-    def insert(self, left, right):
-        self.left = left
-        if (not left.has_parent and left.distance < self.distance + left.weight) or \
-                (left.has_parent and left.distance > self.distance + left.weight):
-            left.distance = self.distance + left.weight
-            left.result = self.result + left.data
-            left.has_parent = True
-
-        self.right = right
-        if (not right.has_parent and right.distance < self.distance + right.weight) or \
-                (right.has_parent and right.distance > self.distance + right.weight):
-            right.distance = self.distance + right.weight
-            right.result = self.result + right.data
-            right.has_parent = True
-
-        return self
-
-    @staticmethod
-    def from_triangle_tree(triangle_numbers):
-        triangle_nodes = [[TreeNode(number) for number in numbers] for numbers in triangle_numbers]
-
-        for row in range(len(triangle_nodes) - 1):
-            next_row = triangle_nodes[row + 1]
-            for ix, node in enumerate(triangle_nodes[row]):
-                node.insert(next_row[ix], next_row[ix + 1])
-
-        root = triangle_nodes[0][0]
-        leafs = triangle_nodes[len(triangle_nodes) - 1]
-
-        return root, leafs
 
 
 if __name__ == '__main__':
