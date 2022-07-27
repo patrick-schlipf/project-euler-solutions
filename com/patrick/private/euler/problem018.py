@@ -42,12 +42,27 @@ class Problem18(object):
 
     @Benchmark
     def attempt_1(self):
-        result = 0
-
         root, leafs = TreeNode.from_triangle_tree(self.triangle_numbers)
-
         result = max(leafs, key=attrgetter('result')).result
 
+        print("")
+        print(f"Result: {result}")
+
+    @Benchmark
+    def attempt_2(self):
+        numbers = self.triangle_numbers
+        for row_ix in range(1, len(numbers)):
+            row = numbers[row_ix]
+            prev = numbers[row_ix - 1]
+            for ix, number in enumerate(row):
+                if ix == 0:
+                    row[ix] = number + prev[ix]
+                elif ix == len(row) - 1:
+                    row[ix] = number + prev[ix - 1]
+                else:
+                    row[ix] = max(number + prev[ix - 1], number + prev[ix])
+
+        result = max(numbers[len(numbers) - 1])
         print("")
         print(f"Result: {result}")
 
@@ -104,4 +119,5 @@ if __name__ == '__main__':
     problem = Problem18(filename="../../../../resources/problem018.txt")
 
     problem.attempt_1()
+    problem.attempt_2()
     problem.official_solution()

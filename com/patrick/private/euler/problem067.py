@@ -42,6 +42,24 @@ class Problem67(object):
         print(f"Result: {result}")
 
     @Benchmark
+    def attempt_2(self):
+        numbers = self.triangle_numbers
+        for row_ix in range(1, len(numbers)):
+            row = numbers[row_ix]
+            prev = numbers[row_ix - 1]
+            for ix, number in enumerate(row):
+                if ix == 0:
+                    row[ix] = number + prev[ix]
+                elif ix == len(row) - 1:
+                    row[ix] = number + prev[ix - 1]
+                else:
+                    row[ix] = max(number + prev[ix - 1], number + prev[ix])
+
+        result = max(numbers[len(numbers) - 1])
+        print("")
+        print(f"Result: {result}")
+
+    @Benchmark
     def official_solution(self):
         result = "N/A"
         print("")
@@ -94,4 +112,5 @@ if __name__ == '__main__':
     problem = Problem67(filename="../../../../resources/problem067.txt")
 
     problem.attempt_1()
+    problem.attempt_2()
     problem.official_solution()
