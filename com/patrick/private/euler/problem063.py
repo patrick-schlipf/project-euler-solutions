@@ -32,7 +32,7 @@ class Problem63(object):
         for base in range(1, base_limit):
             for exponent in range(2, exp_limit):
                 num = pow(base, exponent)
-                if len(str(num)) == exponent:
+                if MathUtils.len(num) == exponent:
                     print(f"{base}^{exponent} = {num}")
                     result += 1
 
@@ -47,7 +47,7 @@ class Problem63(object):
 
     def calculate_limit(self):
         exponent = 1
-        while len(str(pow(9, exponent))) == exponent:
+        while MathUtils.len(pow(9, exponent)) == exponent:
             exponent += 1
 
         return exponent - 1

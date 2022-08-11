@@ -31,7 +31,7 @@ class Problem57(object):
         result = 0
 
         for (numerator, denominator) in self.generate_sqrt_2_convergents():
-            if len(str(numerator)) > len(str(denominator)):
+            if MathUtils.len(numerator) > MathUtils.len(denominator):
                 result += 1
 
         print("")

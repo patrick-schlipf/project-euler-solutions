@@ -23,7 +23,7 @@ class Problem13(object):
 
         print("")
         print(f"Result: {result}")
-        print(f"Result: {math.floor(result / pow(10, len(str(result)) - self.digits))}")
+        print(f"Result: {math.floor(result / pow(10, MathUtils.len(result) - self.digits))}")
 
     @Benchmark
     def official_solution(self):
