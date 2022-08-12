@@ -30,21 +30,8 @@ class Problem92(object):
 
     @Benchmark
     def attempt_1(self):
-        result = 0
+        cache = self.get_cache()
         square_digit = {str(i): i ** 2 for i in range(10)}.get
-
-        cache_size = (9 ** 2) * MathUtils.len(self.limit - 1) + 1
-        cache = [False] * cache_size
-        cache[1] = 1
-        cache[89] = 89
-
-        # calculate the first 567 numbers - 9^2 * 7 digits
-        for num in range(1, len(cache)):
-            next_num = int(sum(map(square_digit, str(num))))
-            while not cache[next_num] and next_num != 1 and next_num != 89:
-                next_num = int(sum(map(square_digit, str(next_num))))
-
-            cache[num] = cache[next_num]
 
         result = cache.count(89)
 
@@ -59,26 +46,11 @@ class Problem92(object):
 
     @Benchmark
     def attempt_2(self):
-        happy_numbers = 0
-        # pick a number to permutate [1..n]
-        size = MathUtils.len(self.limit - 1)
-        square_digit = {str(i): i ** 2 for i in range(0, 10)}.get
-
-        cache_size = (9 ** 2) * MathUtils.len(self.limit - 1) + 1
-        cache = [False] * cache_size
-        cache[1] = 1
-        cache[89] = 89
-
-        # calculate the first 567 numbers - 9^2 * 7 digits
-        for num in range(1, len(cache)):
-            next_num = int(sum(map(square_digit, str(num))))
-            while not cache[next_num] and next_num != 1 and next_num != 89:
-                next_num = int(sum(map(square_digit, str(next_num))))
-
-            cache[num] = cache[next_num]
-
+        cache = self.get_cache()
         square_digit = {i: i ** 2 for i in range(0, 10)}.get
-        for combination in itertools.combinations_with_replacement(range(10), size):
+        happy_numbers = 0
+
+        for combination in itertools.combinations_with_replacement(range(10), MathUtils.len(self.limit - 1)):
             next_num = int(sum(map(square_digit, combination)))
 
             if cache[next_num] == 1:
@@ -100,6 +72,24 @@ class Problem92(object):
         result = "N/A"
         print("")
         print(f"Result: {result}")
+
+    def get_cache(self):
+        square_digit = {str(i): i ** 2 for i in range(0, 10)}.get
+
+        cache_size = (9 ** 2) * MathUtils.len(self.limit - 1) + 1
+        cache = [False] * cache_size
+        cache[1] = 1
+        cache[89] = 89
+
+        # calculate the first 567 numbers - 9^2 * 7 digits
+        for num in range(1, len(cache)):
+            next_num = int(sum(map(square_digit, str(num))))
+            while not cache[next_num] and next_num != 1 and next_num != 89:
+                next_num = int(sum(map(square_digit, str(next_num))))
+
+            cache[num] = cache[next_num]
+
+        return cache
 
     @staticmethod
     def get_digits_str(num):
