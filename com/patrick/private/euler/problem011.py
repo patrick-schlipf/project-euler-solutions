@@ -1,7 +1,5 @@
 import math
 
-import numpy
-
 from com.patrick.private.utils.benchmark import Benchmark
 
 

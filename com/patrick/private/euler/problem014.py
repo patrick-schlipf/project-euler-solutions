@@ -23,7 +23,7 @@ class Problem13(object):
     def __init__(self, limit: int):
         assert limit > 0
         self.limit = limit
-        print(f"Problem 13: Which starting number, under {self.limit}, produces the longest collatz chain?")
+        print(f"Problem 14: Which starting number, under {self.limit}, produces the longest collatz chain?")
         print(f"limit={self.limit}")
 
     @Benchmark

@@ -21,7 +21,7 @@ class Problem3(object):
         factors = [1]
         n = self.number
 
-        primes = MathUtils.primes_sieve_of_eratosthenes(10000)
+        primes = MathUtils.primes_sieve_of_eratosthenes(1_000_000)
         for prime in primes:
             if n < prime:
                 break
@@ -50,9 +50,9 @@ class Problem3(object):
 
         if n % factor == 0:
             factors.append(factor)
-            n /= factor
+            n //= factor
             while n % factor == 0:
-                n /= factor
+                n //= factor
 
         factor = 3
         max_factor = math.isqrt(n)
@@ -60,9 +60,9 @@ class Problem3(object):
         while n > 1 and factor <= max_factor:
             if n % factor == 0:
                 factors.append(factor)
-                n /= factor
+                n //= factor
                 while n % factor == 0:
-                    n /= factor
+                    n //= factor
 
                 max_factor = math.isqrt(int(n))
 
@@ -77,7 +77,7 @@ class Problem3(object):
 
 
 if __name__ == '__main__':
-    problem = Problem3(number=600851475143)
+    problem = Problem3(number=600_851_475_143)
 
     problem.attempt_1()
     problem.attempt_2()

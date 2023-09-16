@@ -24,7 +24,7 @@ class Problem2(object):
         number = 0
         fib = MathUtils.fibonacci()
         while number <= self.upper_limit:
-            if number % 2 == 0:
+            if MathUtils.is_even(number):
                 total += number
 
             number = next(fib)

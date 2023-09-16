@@ -1,6 +1,6 @@
-from com.patrick.private.utils.benchmark import Benchmark
-
 import math
+
+from com.patrick.private.utils.benchmark import Benchmark
 
 
 class Problem206(object):
