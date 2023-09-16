@@ -3,8 +3,6 @@ from math import log as ln
 from com.patrick.private.utils.benchmark import Benchmark
 from com.patrick.private.utils.math_utils import MathUtils
 
-import math
-
 
 class Problem7(object):
     """
@@ -32,7 +30,7 @@ class Problem7(object):
         # ------------------------------------------------------------------------------------------------------------
 
         prime = MathUtils.primes_sieve_of_eratosthenes(int(upper_bound))
-        for n in range(self.nth_prime - 1):
+        for n in range(self.nth_prime):
             result = next(prime)
 
         print("")
