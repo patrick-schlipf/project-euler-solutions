@@ -6,16 +6,24 @@ class MathUtils(object):
     phi_negative = (1 - math.sqrt(5)) / 2
 
     @staticmethod
+    def is_even(number: int) -> bool:
+        return number % 2 == 0
+
+    @staticmethod
+    def is_odd(number: int) -> bool:
+        return number % 2 == 1
+
+    @staticmethod
     def gaussian_sum(number: int) -> float:
         return (number * (number + 1)) / 2
 
     @staticmethod
     def sum_of_digits(number: str) -> int:
-        return sum([int(i) for i in number])
+        return sum([int(digit) for digit in number])
 
     @staticmethod
     def sum_of_digits(number: int) -> int:
-        return sum([int(i) for i in str(number)])
+        return MathUtils.sum_of_digits(str(number))
 
     @staticmethod
     def len(number: int) -> int:
@@ -94,26 +102,39 @@ class MathUtils(object):
         return True
 
     @staticmethod
-    def prime_factors(n):
+    def prime_factors(number: int) -> list[int]:
         """Returns all prime factors for the given number."""
-        i = 2
-        factors = []
-        while i * i <= n:
-            if n % i:
-                i += 1
+        factors = [1]
+        factor = 2
+
+        # Check if number is even
+        if MathUtils.is_even(number):
+            factors.append(factor)
+            number //= factor
+            while MathUtils.is_even(number):
+                number //= factor
+                factors.append(factor)
+
+        # Now we can skip all even numbers
+        factor = 3
+        while factor * factor <= number:
+            if number % factor == 0:
+                number //= factor
+                factors.append(factor)
             else:
-                n //= i
-                factors.append(i)
-        if n > 1:
-            factors.append(n)
+                factor += 2
+
+        # Add last number
+        if number > 1:
+            factors.append(number)
         return factors
 
     @staticmethod
-    def divisors(n):
+    def divisors(number: int) -> list[int]:
         """Returns a sorted list of all divisors for the given number."""
-        divs = [1]
-        for i in range(1, int(math.sqrt(n)) + 1):
-            if n % i == 0:
-                divs.extend([i, n // i])
-        divs.append(n)
-        return sorted(list(set(divs)))
+        divisors = [1]
+        for divisor in range(1, int(math.sqrt(number)) + 1):
+            if number % divisor == 0:
+                divisors.extend([divisor, number // divisor])
+        divisors.append(number)
+        return sorted(list(set(divisors)))

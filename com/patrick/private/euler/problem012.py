@@ -1,8 +1,6 @@
 from com.patrick.private.utils.benchmark import Benchmark
 from com.patrick.private.utils.math_utils import MathUtils
 
-import math
-
 
 class Problem12(object):
     """
@@ -33,7 +31,6 @@ class Problem12(object):
     @Benchmark
     def attempt_1(self):
         result = 0
-        divisors = []
         i = 1
         while True:
             result += i
