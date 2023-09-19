@@ -2,7 +2,7 @@ from com.patrick.private.utils.benchmark import Benchmark
 from com.patrick.private.utils.math_utils import MathUtils
 
 
-class Problem(object):
+class Problem47(object):
     """
     The first two consecutive numbers to have two distinct prime factors are:
 
@@ -60,7 +60,7 @@ class Problem(object):
 
 
 if __name__ == '__main__':
-    problem = Problem(distinct_prime_factors=4, chain=4)
+    problem = Problem47(distinct_prime_factors=4, chain=4)
 
     problem.attempt_1()
     problem.official_solution()
