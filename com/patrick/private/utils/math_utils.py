@@ -75,7 +75,7 @@ class MathUtils(object):
         """
         Sieve of Eratosthenes
 
-        Finding all prime numbers up to any given limit.
+        Finding all prime numbers up to a given limit.
         """
         a = [True] * limit  # Initialize the primality list
         a[0] = a[1] = False
