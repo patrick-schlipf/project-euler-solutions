@@ -21,29 +21,33 @@ class Problem99(object):
         with open(filename) as f:
             self.base_exp = [[int(n) for n in line.split(",")] for line in f.readlines()]
 
-        print(f"Problem 99: Determine which line number has the greatest numerical value.")
+        print("Problem 99: Determine which line number has the greatest numerical value.")
 
     @Benchmark
     def attempt_1(self):
         num = self.base_exp[0]
         log = num[1] * math.log(num[0])
-        max_ix = 0
-        max_num = log
-        min_ix = 0
-        min_num = log
+        greatest = {
+            "idx": 0,
+            "num": log
+        }
+        smallest = {
+            "idx": 0,
+            "num": log
+        }
 
         for ix, num in enumerate(self.base_exp):
             log = num[1] * math.log(num[0])
-            if max_num < log:
-                max_num = log
-                max_ix = ix
-            if min_num > log:
-                min_num = log
-                min_ix = ix
+            if greatest["num"] < log:
+                greatest["num"] = log
+                greatest["idx"] = ix
+            if smallest["num"] > log:
+                smallest["num"] = log
+                smallest["idx"] = ix
 
-        print(f"Max: {max_ix + 1} - {self.base_exp[max_ix][0]}^{self.base_exp[max_ix][1]}")
-        print(f"Min: {min_ix + 1} - {self.base_exp[min_ix][0]}^{self.base_exp[min_ix][1]}")
-        result = max_ix + 1
+        print(f"Max: {greatest['idx'] + 1} - {self.base_exp[greatest['idx']][0]}^{self.base_exp[greatest['idx']][1]}")
+        print(f"Min: {smallest['idx'] + 1} - {self.base_exp[smallest['idx']][0]}^{self.base_exp[smallest['idx']][1]}")
+        result = greatest['idx'] + 1
         print("")
         print(f"Result: {result}")
 
