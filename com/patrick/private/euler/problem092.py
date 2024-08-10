@@ -1,10 +1,9 @@
 import itertools
+import math
 from collections import Counter
 
 from com.patrick.private.utils.benchmark import Benchmark
 from com.patrick.private.utils.math_utils import MathUtils
-
-import math
 
 
 class Problem92(object):

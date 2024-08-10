@@ -28,7 +28,10 @@ class Problem57(object):
     def attempt_1(self):
         result = 0
 
-        for (numerator, denominator) in self.generate_sqrt_2_convergents():
+        sqrt_2_convergents = MathUtils.sqrt_convergents(2, simplify=False)
+
+        for _ in range(self.steps + 1):
+            numerator, denominator = next(sqrt_2_convergents)
             if MathUtils.len(numerator) > MathUtils.len(denominator):
                 result += 1
 
@@ -40,14 +43,6 @@ class Problem57(object):
         result = "N/A"
         print("")
         print(f"Result: {result}")
-
-    def generate_sqrt_2_convergents(self):
-        # https://en.wikipedia.org/wiki/Square_root_of_2#Continued_fraction
-        p = 1
-        q = 1
-        for _ in range(self.steps + 1):
-            p, q = p + 2 * q, p + q
-            yield p, q
 
 
 if __name__ == '__main__':
