@@ -7,7 +7,7 @@ class Problem57(object):
     It is possible to show that the square root of two can be expressed as an infinite continued fraction.
     By expanding this for the first four iterations, we get:
 
-    1 + \frac 1 2 = \frac  32 = 1.5
+    1 + \frac 1 2 = \frac 3 2 = 1.5
     1 + \frac 1 {2 + \frac 1 2} = \frac 7 5 = 1.4
     1 + \frac 1 {2 + \frac 1 {2+\frac 1 2}} = \frac {17}{12} = 1.41666 \dots
     1 + \frac 1 {2 + \frac 1 {2+\frac 1 {2+\frac 1 2}}} = \frac {41}{29} = 1.41379 \dots

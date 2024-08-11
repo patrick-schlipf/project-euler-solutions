@@ -29,14 +29,11 @@ class Problem67(object):
         with open(filename) as f:
             self.triangle_numbers = [[int(n) for n in line.split(" ")] for line in f.readlines()]
 
-        print(f"Problem 67: Find the maximum total from top to bottom of the given triangle.")
+        print("Problem 67: Find the maximum total from top to bottom of the given triangle.")
 
     @Benchmark
     def attempt_1(self):
-        result = 0
-
         root, leafs = TreeNode.from_triangle_tree(self.triangle_numbers)
-
         result = max(leafs, key=attrgetter('result')).result
 
         print("")

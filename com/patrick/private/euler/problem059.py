@@ -35,7 +35,7 @@ class Problem59(object):
             self.encrypted = [int(n) for n in f.read().split(",")]
 
         self.key_length = 3
-        print(f"Problem 59: Decrypt the message and find the sum of the ASCII values in the original text.")
+        print("Problem 59: Decrypt the message and find the sum of the ASCII values in the original text.")
 
     @Benchmark
     def attempt_1(self):

@@ -38,7 +38,7 @@ class Problem18(object):
         with open(filename) as f:
             self.triangle_numbers = [[int(n) for n in line.split(" ")] for line in f.readlines()]
 
-        print(f"Problem 18: Find the maximum total from top to bottom of the given triangle.")
+        print("Problem 18: Find the maximum total from top to bottom of the given triangle.")
 
     @Benchmark
     def attempt_1(self):

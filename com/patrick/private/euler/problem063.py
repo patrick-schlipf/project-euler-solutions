@@ -10,7 +10,7 @@ class Problem63(object):
     """
 
     def __init__(self):
-        print(f"Problem 63: How many n-digit positive integers exist which are also an nth power?")
+        print("Problem 63: How many n-digit positive integers exist which are also an nth power?")
 
     @Benchmark
     def attempt_1(self):
