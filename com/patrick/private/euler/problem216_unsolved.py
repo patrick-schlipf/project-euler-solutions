@@ -1,5 +1,3 @@
-import sympy
-
 from com.patrick.private.utils.benchmark import Benchmark
 from com.patrick.private.utils.math_utils import MathUtils
 
@@ -24,25 +22,8 @@ class Problem216(object):
         result = 0
         for n in range(2, self.limit):
             fn = 2 * (n ** 2) - 1
-            if MathUtils.is_prime(fn):
+            if MathUtils.is_prime_fast(fn):
                 result += 1
-                # print(f"{n}: True  - {fn}")
-            # else:
-            # print(f"{n}: False - {fn}")
-
-        print("")
-        print(f"Result: {result}")
-
-    @Benchmark
-    def attempt_2(self):
-        result = 0
-        for n in range(2, self.limit):
-            fn = 2 * (n ** 2) - 1
-            if sympy.isprime(fn):
-                result += 1
-                # print(f"{n}: True  - {fn}")
-            # else:
-            # print(f"{n}: False - {fn}")
 
         print("")
         print(f"Result: {result}")
@@ -55,8 +36,7 @@ class Problem216(object):
 
 
 if __name__ == '__main__':
-    problem = Problem216(limit=10_000)
+    problem = Problem216(limit=50_000)
 
     problem.attempt_1()
-    problem.attempt_2()
     problem.official_solution()
