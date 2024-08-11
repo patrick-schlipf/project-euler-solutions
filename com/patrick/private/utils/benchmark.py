@@ -17,7 +17,7 @@ class Benchmark(object):
         # ---
 
         end = time.perf_counter_ns()
-        print(f"Took: {end - start} ns")
+        print(f"Took: {end - start:_} ns")
         print()
 
         return ret
